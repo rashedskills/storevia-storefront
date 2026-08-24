@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+:root {
+  --store-primary: #7c2d62;
+  --store-accent: #f472b6;
+
+  --store-dark: #171221;
+  --store-text: #554d5d;
+
+  --store-bg: #ffffff;
+  --store-soft: #fff6fa;
+  --store-border: #ede7eb;
+
+  --store-heading-font: "Poppins";
+  --store-body-font: "Inter";
+
+  --store-max-width: 1340px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--store-bg);
+  color: var(--store-text);
+
+  font-family:
+    var(--store-body-font),
+    Arial,
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--store-dark);
+
+  font-family:
+    var(--store-heading-font),
+    var(--store-body-font),
+    Arial,
+    sans-serif;
+
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Professional text selection */
+
+::selection {
+  background: var(--store-accent);
+  color: var(--store-dark);
+}
+
+/* Keep touch interactions responsive */
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.storevia-page-content {
+  position: relative;
+  z-index: 0;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.storevia-page-content {
+  color: #525252;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.storevia-page-content h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--store-dark);
+}
+
+.storevia-page-content h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.65rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--store-dark);
+}
+
+.storevia-page-content p {
+  margin-bottom: 1rem;
+}
+
+.storevia-page-content ul,
+.storevia-page-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.storevia-page-content ul {
+  list-style: disc;
+}
+
+.storevia-page-content ol {
+  list-style: decimal;
+}
+
+.storevia-page-content a {
+  color: var(--store-primary);
+  text-decoration: underline;
+}
+
+.storevia-page-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+}
