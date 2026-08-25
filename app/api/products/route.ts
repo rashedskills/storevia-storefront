@@ -5,14 +5,9 @@ import {
 import {
   getProducts,
   getCategoryProducts,
+  getBrandProducts,
   type ProductSort,
 } from "@/lib/woocommerce/products";
-
-import {
-   getBrandProducts,
-  type ProductSort,
-} from "@/lib/woocommerce/products";
-
 
 export async function GET(
   request: Request

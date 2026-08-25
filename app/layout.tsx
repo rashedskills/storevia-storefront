@@ -2,10 +2,15 @@ import type {
   Metadata,
 } from "next";
 
+import {
+  Suspense,
+} from "react";
+
 import type {
   CSSProperties,
   ReactNode,
 } from "react";
+
 
 import "./globals.css";
 
@@ -45,6 +50,9 @@ import {
   FacebookPixel,
 } from "@/components/tracking/facebook-pixel";
 
+import {
+  ScrollToTop,
+} from "@/components/layout/scroll-to-top";
 
 /* ================================================================
    GLOBAL SEO
@@ -204,6 +212,10 @@ export default async function RootLayout({
           <MobileCategoryProvider
             categories={categories}
           >
+
+            <Suspense fallback={null}>
+              <ScrollToTop />
+            </Suspense>
 
             <SiteHeader
               settings={settings}

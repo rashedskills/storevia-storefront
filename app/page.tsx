@@ -61,7 +61,7 @@ export default async function HomePage() {
         perPage:
           settings.new_arrivals_limit,
         page: 1,
-        sort: "newest",
+        sort: "latest",
       })
     : Promise.resolve([]),
 

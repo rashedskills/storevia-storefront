@@ -116,7 +116,7 @@ export async function generateMetadata({
   const description =
     seoDescription(
       product.short_description ||
-        product.description,
+      product.description ||
 
       settings
         .seo_default_description
@@ -291,7 +291,7 @@ export default async function ProductPage({
   const productDescription =
     seoDescription(
       product.short_description ||
-        product.description,
+      product.description ||
 
       settings
         .seo_default_description

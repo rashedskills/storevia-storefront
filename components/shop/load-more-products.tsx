@@ -16,9 +16,7 @@ import type {
 
 type LoadMoreProductsProps = {
   initialProducts: WooProduct[];
-
   perPage?: number;
-
   sort?: string;
 
   type?:
@@ -27,6 +25,8 @@ type LoadMoreProductsProps = {
     | "brand";
 
   slug?: string;
+  
+  onSale?: boolean;
 };
 
 

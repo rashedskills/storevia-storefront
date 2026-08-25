@@ -29,10 +29,6 @@ const options: Array<{
     label: "Best Selling",
   },
   {
-    value: "popularity",
-    label: "Sort by popularity",
-  },
-  {
     value: "rating",
     label: "Sort by average rating",
   },

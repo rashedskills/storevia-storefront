@@ -22,6 +22,11 @@ import {
   CheckoutLink,
 } from "@/components/tracking/checkout-link";
 
+import type {
+  WooCart,
+} from "@/lib/woocommerce/cart-types";
+
+
 function money(
   amount: string,
   minorUnit: number

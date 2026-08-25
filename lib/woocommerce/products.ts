@@ -12,13 +12,14 @@ export type WooProduct = {
 
   on_sale: boolean;
 
-  prices: {
-    price: string;
-    regular_price: string;
-    sale_price: string;
-    currency_symbol: string;
-    currency_minor_unit: number;
-  };
+prices: {
+  price: string;
+  regular_price: string;
+  sale_price: string;
+  currency_code: string;
+  currency_symbol: string;
+  currency_minor_unit: number;
+};
 
   images: Array<{
     id: number;
@@ -123,16 +124,19 @@ export async function getBestSellingProducts(
 export type ProductSort =
   | "default"
   | "best-selling"
+  | "popularity"
   | "rating"
   | "latest"
   | "price-asc"
   | "price-desc";
 
-export type ProductQueryOptions = {
+type ProductQueryOptions = {
   perPage?: number;
+  page?: number;
   sort?: ProductSort;
   category?: string;
   brand?: string;
+  onSale?: boolean;
 };
 
 function buildProductQuery({
@@ -160,7 +164,7 @@ function buildProductQuery({
 
   params.set(
     "page",
-    String(page)
+    String(page ?? 1)
   );
 
 
@@ -285,16 +289,17 @@ function getSortQuery(
 
 function buildSortQuery(sort: ProductSort) {
   switch (sort) {
+    case "best-selling":
     case "latest":
       return "&orderby=date&order=desc";
 
-    case "price-low":
+    case "price-asc":
       return "&orderby=price&order=asc";
 
-    case "price-high":
+    case "price-desc":
       return "&orderby=price&order=desc";
 
-    case "popular":
+    case "popularity":
       return "&orderby=popularity&order=desc";
 
     case "rating":
@@ -453,12 +458,13 @@ export type WooVariation = {
   sku?: string;
 
   prices: {
-    price: string;
-    regular_price: string;
-    sale_price: string;
-    currency_symbol: string;
-    currency_minor_unit: number;
-  };
+  price: string;
+  regular_price: string;
+  sale_price: string;
+  currency_code: string;
+  currency_symbol: string;
+  currency_minor_unit: number;
+};
 
   images: Array<{
     id: number;

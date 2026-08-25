@@ -436,11 +436,11 @@ const previewTotal =
             previewTotal,
 
           currency:
-            cart.totals
+            cart?.totals
               .currency_code,
 
           itemCount:
-            cart.items_count,
+            cart?.items_count,
         })
       );
 

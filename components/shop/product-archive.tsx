@@ -31,6 +31,7 @@ type Props = {
 };
 
 type ProductArchiveProps = {
+  breadcrumb?: string;
   title: string;
   products: WooProduct[];
 

@@ -63,6 +63,11 @@ export type WooCart = {
 
   coupons: Array<{
     code: string;
+
+    totals?: CartMoney & {
+      total_discount: string;
+      total_discount_tax: string;
+    };
   }>;
 
   totals: CartMoney & {
