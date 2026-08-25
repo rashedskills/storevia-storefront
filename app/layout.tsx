@@ -228,9 +228,11 @@ export default async function RootLayout({
             <SiteFooter />
 
 
-            <MobileBottomNav
-              settings={settings}
-            />
+            <Suspense fallback={null}>
+              <MobileBottomNav 
+                settings={settings} 
+              />
+            </Suspense>
 
           </MobileCategoryProvider>
 
