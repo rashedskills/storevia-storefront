@@ -233,12 +233,13 @@ export default async function RootLayout({
                 settings={settings} 
               />
             </Suspense>
+            
 
           </MobileCategoryProvider>
 
         </CartProvider>
-
-        {Boolean(
+        <Suspense fallback={null}>
+          {Boolean(
           settings.facebook_pixel_enabled
         ) &&
         settings.facebook_pixel_id && (
@@ -248,6 +249,8 @@ export default async function RootLayout({
             }
           />
         )}
+        </Suspense>
+        
 
       </body>
 

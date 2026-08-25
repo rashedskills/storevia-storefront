@@ -199,17 +199,16 @@ export function AccountPage() {
   await loadAccount();
 }
 
+if (
+  typeof window !==
+  "undefined"
+) {
   window.dispatchEvent(
-  new Event(
-    "storevia-auth-changed"
-  )
-);
-
-window.dispatchEvent(
-  new Event(
-    "storevia-auth-changed"
-  )
-);
+    new Event(
+      "storevia-auth-changed"
+    )
+  );
+}
 
   async function logout() {
     await fetch(
