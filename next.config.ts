@@ -1,21 +1,17 @@
 import type { NextConfig } from "next";
 
-const isDevelopment = process.env.NODE_ENV === "development";
-
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "storevia.test",
+        protocol: "https",
+        hostname: "admin.fashionspotbd.com",
         port: "",
         pathname: "/wp-content/uploads/**",
       },
     ],
 
-    // Only bypass Next image optimization locally.
-    // Production will use optimization normally.
-    unoptimized: isDevelopment,
+    unoptimized: true,
     minimumCacheTTL: 3600,
   },
 };
