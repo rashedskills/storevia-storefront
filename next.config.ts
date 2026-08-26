@@ -1,6 +1,12 @@
-import type { NextConfig } from "next";
+import type {
+  NextConfig,
+} from "next";
 
-const isDevelopment = process.env.NODE_ENV === "development";
+
+const isDevelopment =
+  process.env.NODE_ENV ===
+  "development";
+
 
 const nextConfig: NextConfig = {
   images: {
@@ -11,13 +17,27 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/wp-content/uploads/**",
       },
+
+      {
+        protocol: "https",
+        hostname: "admin.fashionspotbd.com",
+        port: "",
+        pathname: "/wp-content/uploads/**",
+      },
     ],
 
-    // Only bypass Next image optimization locally.
-    // Production will use optimization normally.
-    unoptimized: isDevelopment,
+    /*
+     * For now, bypass Next.js image optimization
+     * in production too.
+     *
+     * This avoids Vercel / WordPress remote image
+     * fetching issues while the project is launching.
+     */
+    unoptimized: true,
+
     minimumCacheTTL: 3600,
   },
 };
+
 
 export default nextConfig;
