@@ -105,6 +105,8 @@ export function CartProvider({
             {
               cache:
                 "no-store",
+              credentials: 
+                "include",
             }
           );
 
@@ -174,6 +176,8 @@ export function CartProvider({
           {
             method:
               "POST",
+
+             credentials: "include",
 
             headers: {
               "Content-Type":
@@ -262,6 +266,8 @@ export function CartProvider({
           {
             method:
               "POST",
+            
+            credentials: "include",
 
             headers: {
               "Content-Type":
@@ -346,6 +352,8 @@ export function CartProvider({
           {
             method:
               "POST",
+
+            credentials: "include",
 
             headers: {
               "Content-Type":
@@ -453,6 +461,8 @@ export function CartProvider({
           {
             method:
               "POST",
+
+            credentials: "include",
 
             headers: {
               "Content-Type":
@@ -596,6 +606,8 @@ export function CartProvider({
           {
             method:
               "DELETE",
+
+            credentials: "include",
 
             headers: {
               "Content-Type":
