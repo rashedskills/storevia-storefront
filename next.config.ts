@@ -20,13 +20,6 @@ const nextConfig: NextConfig = {
 
       {
         protocol: "https",
-        hostname: "admin.fashionspotbd.com",
-        port: "",
-        pathname: "/wp-content/uploads/**",
-      },
-
-      {
-        protocol: "https",
         hostname: "login.fashionspotbd.com",
         port: "",
         pathname: "/wp-content/uploads/**",
