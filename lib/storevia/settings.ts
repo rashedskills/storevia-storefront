@@ -50,6 +50,8 @@ export type StoreviaSettings = {
 
   checkout_city_name: string;
 
+  free_delivery_enabled: number;
+
   inside_city_label: string;
   inside_city_charge: number;
 

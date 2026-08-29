@@ -128,13 +128,21 @@ export function CheckoutPage({
      TOTALS
   ================================================================ */
 
-  const deliveryCharge =
-    deliveryArea === "inside"
+  
+  const freeDelivery =
+  Number(
+    settings.free_delivery_enabled
+  ) === 1;
+
+const deliveryCharge =
+  freeDelivery
+    ? 0
+    : deliveryArea === "inside"
       ? Number(
-          settings.inside_city_charge
+          settings.inside_city_charge || 0
         )
       : Number(
-          settings.outside_city_charge
+          settings.outside_city_charge || 0
         );
 
   /*
@@ -684,107 +692,92 @@ const previewTotal =
             DELIVERY AREA
         ========================================================== */}
 
-        <section className="rounded-[var(--store-radius-lg)] border border-[var(--store-border)] bg-white p-4 sm:p-6">
+        {!freeDelivery && (
+  <section className="rounded-[var(--store-radius-lg)] border border-[var(--store-border)] bg-white p-4 sm:p-6">
 
-          <h2 className="text-xl font-bold">
-            Delivery Area
-          </h2>
+    <h2 className="text-xl font-bold">
+      Delivery Area
+    </h2>
 
-          <p className="mt-1 text-sm text-neutral-500">
-            Select where you want the order delivered.
-          </p>
+    <p className="mt-1 text-sm text-neutral-500">
+      Select where you want the order delivered.
+    </p>
 
+    <div className="mt-4 grid gap-3 sm:grid-cols-2">
 
-          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+      {/* INSIDE */}
 
-            {/* INSIDE */}
+      <button
+        type="button"
+        onClick={() =>
+          setDeliveryArea("inside")
+        }
+        className={`relative rounded-[var(--store-radius-md)] border-2 p-4 text-left transition ${
+          deliveryArea === "inside"
+            ? "border-[var(--store-primary)] bg-[var(--store-soft)]"
+            : "border-[var(--store-border)] hover:border-neutral-300"
+        }`}
+      >
 
-            <button
-              type="button"
-              onClick={() =>
-                setDeliveryArea(
-                  "inside"
-                )
-              }
-              className={`relative rounded-[var(--store-radius-md)] border-2 p-4 text-left transition ${
-                deliveryArea ===
-                "inside"
-                  ? "border-[var(--store-primary)] bg-[var(--store-soft)]"
-                  : "border-[var(--store-border)] hover:border-neutral-300"
-              }`}
-            >
+        {deliveryArea === "inside" && (
+          <span className="absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-[var(--store-primary)] text-[11px] font-bold text-white">
+            ✓
+          </span>
+        )}
 
-              {deliveryArea ===
-                "inside" && (
-                <span className="absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-[var(--store-primary)] text-[11px] font-bold text-white">
-                  ✓
-                </span>
-              )}
+        <div className="pr-7 font-bold">
+          {settings.inside_city_label}{" "}
+          {settings.checkout_city_name}
+        </div>
 
-              <div className="pr-7 font-bold">
-                {
-                  settings.inside_city_label
-                }{" "}
-                {
-                  settings.checkout_city_name
-                }
-              </div>
+        <div className="mt-1 text-sm text-neutral-500">
+          Delivery Charge: ৳
+          {Number(
+            settings.inside_city_charge || 0
+          ).toLocaleString()}
+        </div>
 
-              <div className="mt-1 text-sm text-neutral-500">
-                Delivery Charge: ৳
-                {Number(
-                  settings.inside_city_charge
-                ).toLocaleString()}
-              </div>
-
-            </button>
+      </button>
 
 
-            {/* OUTSIDE */}
+      {/* OUTSIDE */}
 
-            <button
-              type="button"
-              onClick={() =>
-                setDeliveryArea(
-                  "outside"
-                )
-              }
-              className={`relative rounded-[var(--store-radius-md)] border-2 p-4 text-left transition ${
-                deliveryArea ===
-                "outside"
-                  ? "border-[var(--store-primary)] bg-[var(--store-soft)]"
-                  : "border-[var(--store-border)] hover:border-neutral-300"
-              }`}
-            >
+      <button
+        type="button"
+        onClick={() =>
+          setDeliveryArea("outside")
+        }
+        className={`relative rounded-[var(--store-radius-md)] border-2 p-4 text-left transition ${
+          deliveryArea === "outside"
+            ? "border-[var(--store-primary)] bg-[var(--store-soft)]"
+            : "border-[var(--store-border)] hover:border-neutral-300"
+        }`}
+      >
 
-              {deliveryArea ===
-                "outside" && (
-                <span className="absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-[var(--store-primary)] text-[11px] font-bold text-white">
-                  ✓
-                </span>
-              )}
+        {deliveryArea === "outside" && (
+          <span className="absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-[var(--store-primary)] text-[11px] font-bold text-white">
+            ✓
+          </span>
+        )}
 
-              <div className="pr-7 font-bold">
-                {
-                  settings.outside_city_label
-                }{" "}
-                {
-                  settings.checkout_city_name
-                }
-              </div>
+        <div className="pr-7 font-bold">
+          {settings.outside_city_label}{" "}
+          {settings.checkout_city_name}
+        </div>
 
-              <div className="mt-1 text-sm text-neutral-500">
-                Delivery Charge: ৳
-                {Number(
-                  settings.outside_city_charge
-                ).toLocaleString()}
-              </div>
+        <div className="mt-1 text-sm text-neutral-500">
+          Delivery Charge: ৳
+          {Number(
+            settings.outside_city_charge || 0
+          ).toLocaleString()}
+        </div>
 
-            </button>
+      </button>
 
-          </div>
+    </div>
 
-        </section>
+  </section>
+)}
 
 
         {/* ==========================================================
@@ -1347,8 +1340,9 @@ const previewTotal =
             </span>
 
             <span className="font-medium text-[var(--store-dark)]">
-              {cart.totals.currency_symbol}
-              {deliveryCharge.toLocaleString()}
+              {freeDelivery
+                ? "FREE"
+                : `${cart.totals.currency_symbol}${deliveryCharge.toLocaleString()}`}
             </span>
 
           </div>
