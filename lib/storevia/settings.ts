@@ -154,15 +154,9 @@ export type StoreviaSettings = {
 export async function getStoreviaSettings(): Promise<StoreviaSettings> {
   const response = await fetch(
     `${WP_URL}/wp-json/storevia/v1/settings`,
-    process.env.NODE_ENV === "development"
-      ? {
-          cache: "no-store",
-        }
-      : {
-          next: {
-            revalidate: 300,
-          },
-        }
+    {
+      cache: "no-store",
+    }
   );
 
   if (!response.ok) {

@@ -43,7 +43,7 @@ export async function getPageBySlug(
             : "force-cache",
 
         next: {
-          revalidate: 300,
+          revalidate: 60,
         },
       }
     );

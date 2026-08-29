@@ -28,7 +28,7 @@ export async function getBrands(
     `/products/brands?per_page=${perPage}`,
     {
       next: {
-        revalidate: 600,
+        revalidate: 30,
       },
     }
   );
@@ -42,7 +42,7 @@ export async function getBrandBySlug(
       `/products/brands/${encodeURIComponent(slug)}`,
       {
         next: {
-          revalidate: 600,
+          revalidate: 60,
         },
       }
     );

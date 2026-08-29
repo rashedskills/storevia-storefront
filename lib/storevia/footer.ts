@@ -48,7 +48,7 @@ export async function getStoreviaFooter(): Promise<StoreviaFooter> {
             : "force-cache",
 
         next: {
-          revalidate: 300,
+          revalidate: 60,
         },
       }
     );
