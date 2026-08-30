@@ -31,7 +31,7 @@ export async function wooFetch<T>(
       next: isDevelopment
         ? undefined
         : {
-            revalidate: 300,
+            revalidate: 30,
           },
     }
   );

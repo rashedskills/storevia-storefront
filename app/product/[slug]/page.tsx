@@ -260,7 +260,7 @@ export default async function ProductPage({
 
   getRelatedProducts(
     product.id,
-    5
+    8
   ),
 
   getProductReviews(
